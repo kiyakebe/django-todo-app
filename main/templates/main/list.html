@@ -1,14 +1,21 @@
 {% extends "main/base.html" %} {% block title %} View List {% endblock %} 
-
-
 {% block content %}
 
 <h1>{{ ls.name }}</h1>
 
-<ul>
-  {% for item in ls.item_set.all %} 
-        <li>{{ item.text }}</li>
-  {% endfor %}
-</ul>
+<form method="POST" action="#">
+  {% csrf_token %}
+  <ul>
+    {% for item in ls.item_set.all %} 
+    {% if item.complete == False %}
+      <li><input type="checkbox" name="c{{item.id}}" value="clicked" checked /> {{ item.text }}</li>
+    {% else %}
+      <li><input type="checkbox" name="c{{item.id}}" value="clicked" /> {{ item.text }}</li>
+    {% endif %} {% endfor %}
+  </ul>
+  <button type="submit" name="save" value="save">Save</button>
+  <input type="text" name="new" />
+  <button type="submit" name="newItem" value="newItem">Add Item</button>
+</form>
 
 {% endblock %}
