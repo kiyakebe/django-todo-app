@@ -7,7 +7,7 @@
   {% csrf_token %}
   <ul>
     {% for item in ls.item_set.all %} 
-    {% if item.complete == False %}
+    {% if item.complete == True %}
       <li><input type="checkbox" name="c{{item.id}}" value="clicked" checked /> {{ item.text }}</li>
     {% else %}
       <li><input type="checkbox" name="c{{item.id}}" value="clicked" /> {{ item.text }}</li>
