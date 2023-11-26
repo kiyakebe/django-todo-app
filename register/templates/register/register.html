@@ -1,0 +1,16 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+Create an Acount
+{% endblock %}
+
+{% block content %}
+<h1>Create An Acount</h1>
+
+<form method="post" class="form-group">
+    {% csrf_token  %}
+    {{form}}
+    <button class="btn btn-bg-success ">Register</buttton>
+</form>
+
+{% endblock %}
